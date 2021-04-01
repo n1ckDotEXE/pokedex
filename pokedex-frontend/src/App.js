@@ -47,12 +47,13 @@ export class App extends Component {
 		return (
 			<>
 				<ToastContainer />
-				<Home />
+
 				<MainRouter
 					user={this.state.user}
 					handleUserLogin={this.handleUserLogin}
 					handleUserLogout={this.handleUserLogout}
 				/>
+				<Home />
 			</>
 		);
 	}

@@ -10,17 +10,35 @@ export class Home extends Component {
 			let pokeData = await axios.get(
 				`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=2000`
 			);
-			this.setState({
+
+			const newPokeArray = this.setState({
 				pokeArray: pokeData,
 			});
 		} catch (e) {
 			console.log(e);
 		}
-		console.log(this.state.pokeArray);
 	}
 
+	showPokeArray = () => {
+		let mapper = this.pokeArray.map((item) => {
+			return (
+				<div className="col-sm-4" key={1}>
+					<div className="card">
+						<div>ssss</div>
+					</div>
+				</div>
+			);
+		});
+	};
+
 	render() {
-		return <div>Home</div>;
+		return (
+			<div className="row">
+				{this.state.pokeArray.map((pokemon, index) => {
+					<p key={index}>{pokemon.name}</p>;
+				})}
+			</div>
+		);
 	}
 }
 export default Home;
