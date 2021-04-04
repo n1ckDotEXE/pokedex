@@ -59,10 +59,10 @@ export class Login extends Component {
 			<div className="form-body">
 				<main className="form-signin">
 					<form onSubmit={this.handleLoginSubmit}>
-						<h1 className="h3 mb-3 fw-normal">Please login</h1>
+						<h1 className="h3 mb-3 fw-normal">Login</h1>
 
 						<label htmlFor="inputEmail" className="visually-hidden">
-							Email address
+							Email Address
 						</label>
 						<input
 							type="email"

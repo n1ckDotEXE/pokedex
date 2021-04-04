@@ -19,7 +19,7 @@ function Navbar(props) {
 					exact
 					className="btn btn-primary"
 					activeStyle={{ color: "yellow" }}
-					to="/Login"
+					to="/home"
 				>
 					PokeDEX
 				</NavLink>

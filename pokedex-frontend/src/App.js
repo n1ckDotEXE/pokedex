@@ -4,7 +4,6 @@ import jwtDecode from "jwt-decode";
 import "react-toastify/dist/ReactToastify.css";
 
 import MainRouter from "./MainRouter";
-
 export class App extends Component {
 	state = {
 		user: null,
@@ -47,7 +46,6 @@ export class App extends Component {
 		return (
 			<>
 				<ToastContainer />
-
 				<MainRouter
 					user={this.state.user}
 					handleUserLogin={this.handleUserLogin}
