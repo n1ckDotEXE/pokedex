@@ -12,7 +12,7 @@ export class Login extends Component {
 
 	componentDidMount() {
 		if (checkIsUserLoggedIn()) {
-			this.props.history.push("/home");
+			this.props.history.push("/auth-home");
 		} else {
 			this.props.history.push("/login");
 		}
@@ -39,7 +39,8 @@ export class Login extends Component {
 
 			this.props.handleUserLogin(decodedJWTToken);
 
-			this.props.history.push("/home");
+			// Used to move from the current page to another one
+			this.props.history.push("/auth-home");
 		} catch (e) {
 			toast.error(e.response.data, {
 				position: "top-center",

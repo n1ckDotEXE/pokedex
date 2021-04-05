@@ -21,6 +21,9 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	caughtPoke: {
+		type: Array,
+	},
 });
 
 module.exports = mongoose.model("user", UserSchema);

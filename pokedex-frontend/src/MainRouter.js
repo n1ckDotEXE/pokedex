@@ -8,6 +8,7 @@ import Login from "./component/Login/Login";
 import MyPokemon from "./component/MyPokemon/MyPokemon";
 import SignUp from "./component/SignUp/SignUp";
 import NotFound from "./component/NotFound/NotFound";
+import AuthHome from "./component/Home/AuthHome";
 
 const MainRouter = (props) => {
 	return (
@@ -21,6 +22,7 @@ const MainRouter = (props) => {
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/sign-up" component={SignUp} />
 				<Route exact path="/home" component={Home} />
+				<Route exact path="/auth-home" component={AuthHome} />
 				<Route exact path="/" component={Home} />
 				<Route exact path="/my-pokemon" component={MyPokemon} />
 				<Route path="*" component={NotFound} />

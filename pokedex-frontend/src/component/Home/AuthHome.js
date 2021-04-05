@@ -4,6 +4,7 @@ import axios from "axios";
 export class Home extends Component {
 	state = {
 		pokeArray: [],
+		caughtArray: [],
 	};
 
 	async componentDidMount() {
@@ -11,6 +12,10 @@ export class Home extends Component {
 			let payload = await axios.get(
 				`https://pokeapi.co/api/v2/pokemon/?limit=151`
 			);
+
+			// let caughtArrayPayload = await axios.get(
+			// 	"http://localhost:4001/friends/get-all-friends"
+			// );
 
 			this.setState({
 				pokeArray: payload.data.results,
@@ -21,6 +26,20 @@ export class Home extends Component {
 			console.log(e);
 		}
 	}
+
+	handleCaughtPoke = () => {
+		axios
+			.post("/caught", {
+				firstName: "Fred",
+				lastName: "Flintstone",
+			})
+			.then(function (response) {
+				console.log(response);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	};
 
 	showPokeArray = () => {
 		return this.state.pokeArray.map((item, index) => {
@@ -38,6 +57,14 @@ export class Home extends Component {
 						<p className="text-center text-capitalize fs-4 fw-bold">
 							{`#${index + 1} ${item.name}`}
 						</p>
+						<button
+							type="button"
+							className="btn btn-primary btn-sm"
+							onClick={this.handleCaughtPoke}
+						>
+							Caught
+						</button>
+						<br />
 					</div>
 				</div>
 			);

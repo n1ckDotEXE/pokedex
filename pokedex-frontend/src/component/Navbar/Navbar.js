@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
-import "./Navbar.css";
-
 function Navbar(props) {
 	return (
 		<header className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-danger border-bottom shadow">
@@ -14,18 +12,18 @@ function Navbar(props) {
 					PokeDEX
 				</Link>
 			</p>
-			<nav className="my-2 my-md-0 me-md-3">
-				<NavLink
-					exact
-					className="btn btn-primary"
-					activeStyle={{ color: "yellow" }}
-					to="/home"
-				>
-					PokeDEX
-				</NavLink>
-			</nav>
 			{props.user ? (
 				<>
+					<nav className="my-2 my-md-0 me-md-3">
+						<NavLink
+							exact
+							className="btn btn-primary"
+							activeStyle={{ color: "yellow" }}
+							to="/auth-home"
+						>
+							PokeDEX
+						</NavLink>
+					</nav>
 					<NavLink
 						className="btn btn-primary"
 						activeStyle={{ color: "yellow" }}
@@ -52,6 +50,16 @@ function Navbar(props) {
 				</>
 			) : (
 				<>
+					<nav className="my-2 my-md-0 me-md-3">
+						<NavLink
+							exact
+							className="btn btn-primary"
+							activeStyle={{ color: "yellow" }}
+							to="/"
+						>
+							PokeDEX
+						</NavLink>
+					</nav>
 					<NavLink
 						className="btn btn-primary"
 						activeStyle={{ color: "yellow" }}
