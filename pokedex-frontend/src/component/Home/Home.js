@@ -5,26 +5,38 @@ export class Home extends Component {
 	state = {
 		pokeArray: [],
 	};
+
 	async componentDidMount() {
 		try {
-			let pokeData = await axios.get(
-				`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=2000`
+			let payload = await axios.get(
+				`https://pokeapi.co/api/v2/pokemon/?limit=151`
 			);
 
-			const newPokeArray = this.setState({
-				pokeArray: pokeData,
+			this.setState({
+				pokeArray: payload.data.results,
 			});
+
+			console.log(this.state.pokeArray);
 		} catch (e) {
 			console.log(e);
 		}
 	}
 
 	showPokeArray = () => {
-		let mapper = this.pokeArray.map((item) => {
+		return this.state.pokeArray.map((item, index) => {
 			return (
-				<div className="col-sm-4" key={1}>
+				<div className="col-sm-4" key={index}>
 					<div className="card">
-						<div>ssss</div>
+						<img
+							className="rounded mx-auto d-block"
+							src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+								index + 1
+							}.png`}
+							style={{ width: 200, height: 200 }}
+						/>
+						<p className="text-center text-capitalize fs-4 fw-bold">
+							{item.name}
+						</p>
 					</div>
 				</div>
 			);
@@ -32,13 +44,7 @@ export class Home extends Component {
 	};
 
 	render() {
-		return (
-			<div className="row">
-				{this.state.pokeArray.map((pokemon, index) => {
-					<p key={index}>{pokemon.name}</p>;
-				})}
-			</div>
-		);
+		return <div className="row">{this.showPokeArray()}</div>;
 	}
 }
 export default Home;

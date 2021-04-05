@@ -21,6 +21,7 @@ const MainRouter = (props) => {
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/sign-up" component={SignUp} />
 				<Route exact path="/home" component={Home} />
+				<Route exact path="/" component={Home} />
 				<Route exact path="/my-pokemon" component={MyPokemon} />
 				<Route path="*" component={NotFound} />
 			</Switch>
