@@ -26,7 +26,7 @@ export class SignUp extends Component {
 
 	componentDidMount() {
 		if (checkIsUserLoggedIn()) {
-			this.props.history.push("/movie-home");
+			this.props.history.push("/auth-home");
 		} else {
 			this.props.history.push("/sign-up");
 		}
@@ -131,7 +131,7 @@ export class SignUp extends Component {
 				confirmPassword: "",
 			});
 
-			toast.success("YAY! Please go login!!!!!", {
+			toast.success("Sign-Up Successful", {
 				position: "top-center",
 				autoClose: 5000,
 				hideProgressBar: false,
@@ -168,7 +168,7 @@ export class SignUp extends Component {
 					{isError && this.showErrorMessageObj()}
 
 					<form onSubmit={this.handleOnSubmit}>
-						<h1 className="h3 mb-3 fw-normal">Please sign up</h1>
+						<h1 className="h3 mb-3 fw-normal">Sign Up</h1>
 						<label
 							htmlFor="inputFirstName"
 							className="visually-hidden"
@@ -206,7 +206,7 @@ export class SignUp extends Component {
 							pattern="[A-Za-z]*"
 						/>
 						<label htmlFor="inputEmail" className="visually-hidden">
-							Email address
+							Email Address
 						</label>
 						<input
 							type="email"
@@ -258,7 +258,7 @@ export class SignUp extends Component {
 							type="submit"
 							disabled={isError ? true : false}
 						>
-							Sign up
+							Sign Up
 						</button>
 					</form>
 				</main>

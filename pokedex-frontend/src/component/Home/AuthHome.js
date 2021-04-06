@@ -2,10 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 
 export class Home extends Component {
-	state = {
-		pokeArray: [],
-		caughtArray: [],
-	};
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			pokeArray: [],
+			caughtArray: [],
+			isLoading: false,
+			isError: false,
+			errorMessage: "",
+		};
+	}
 
 	async componentDidMount() {
 		try {
