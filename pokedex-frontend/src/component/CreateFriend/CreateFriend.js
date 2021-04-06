@@ -100,7 +100,9 @@ export class CreateFriend extends Component {
 		return this.state.friendsArray.map((item) => {
 			return (
 				<tr key={item._id}>
-					<td>{item.firstName}</td>
+					<td className="text-center text-capitalize">
+						{item.firstName}
+					</td>
 					<td>{item.lastName}</td>
 					<td>{item.nickName}</td>
 					<td>{item.mobileNumber}</td>
@@ -120,100 +122,6 @@ export class CreateFriend extends Component {
 
 		return (
 			<>
-				<div className="form-body">
-					<main className="form-signin">
-						{isError && this.showErrorMessageObj()}
-
-						<form onSubmit={this.handleOnSubmit}>
-							<h1 className="h3 mb-3 fw-normal">
-								Please Create Friend
-							</h1>
-							<label
-								htmlFor="inputFirstName"
-								className="visually-hidden"
-							>
-								First Name
-							</label>
-							<input
-								type="text"
-								id="inputFirstName"
-								className="form-control"
-								placeholder="First Name"
-								required
-								autoFocus
-								name="firstName"
-								value={firstName}
-								onChange={this.handleCreateFriend}
-								pattern="[A-Za-z]*"
-							/>
-							<label
-								htmlFor="inputLastName"
-								className="visually-hidden"
-							>
-								Last Name
-							</label>
-							<input
-								type="text"
-								id="inputLastName"
-								className="form-control"
-								placeholder="Last Name"
-								required
-								autoFocus
-								name="lastName"
-								value={lastName}
-								onChange={this.handleCreateFriend}
-								pattern="[A-Za-z]*"
-							/>
-
-							<label
-								htmlFor="inputNickname"
-								className="visually-hidden"
-							>
-								Nickname
-							</label>
-							<input
-								type="text"
-								id="inputNickname"
-								className="form-control"
-								placeholder="Nickname"
-								required
-								autoFocus
-								name="nickName"
-								value={nickName}
-								onChange={this.handleCreateFriend}
-								pattern="[A-Za-z]*"
-							/>
-
-							<label
-								htmlFor="inputFriendMobileNumber"
-								className="visually-hidden"
-							>
-								Pokemon Number
-							</label>
-							<input
-								type="text"
-								id="inputFriendMobileNumber"
-								className="form-control"
-								placeholder="Friend Mobile Number"
-								required
-								autoFocus
-								name="friendMobileNumber"
-								value={friendMobileNumber}
-								onChange={this.handleCreateFriend}
-							/>
-
-							<button
-								className="w-100 btn btn-lg btn-primary"
-								type="submit"
-								disabled={isError ? true : false}
-							>
-								Create Friend
-							</button>
-						</form>
-					</main>
-					;
-				</div>
-
 				<div>
 					{this.state.isLoading ? (
 						<span>...loading</span>
@@ -223,10 +131,10 @@ export class CreateFriend extends Component {
 								<thead>
 									<tr>
 										<th style={{ width: "10%" }}>
-											First Name
+											Pokemon
 										</th>
 										<th>Last Name</th>
-										<th>Nickname</th>
+										<th>Capture Date</th>
 										<th>Pokemon Number</th>
 									</tr>
 

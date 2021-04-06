@@ -13,10 +13,10 @@ export class Home extends Component {
 			errorMessage: "",
 			pokeName: "",
 			pokeNum: "",
-			firstName: "R",
-			lastName: "R",
-			friendMobileNumber: "6",
-			nickName: "R",
+			firstName: "",
+			lastName: "",
+			friendMobileNumber: "",
+			nickName: "",
 			errorObj: {},
 			friendsArray: [],
 		};
@@ -48,8 +48,8 @@ export class Home extends Component {
 		});
 	};
 
-	handleOnSubmit = async (event1, event2) => {
-		event.preventDefault();
+	handleOnSubmit = async (event, event2) => {
+		// event.preventDefault();
 
 		const {
 			firstName,
@@ -61,13 +61,14 @@ export class Home extends Component {
 		let jwtToken = localStorage.getItem("jwtToken");
 
 		try {
+			var d = new Date();
 			let payload = await axios.post(
 				"http://localhost:4001/friends/create-friend",
 				{
-					firstName,
-					lastName,
-					mobileNumber: friendMobileNumber,
-					nickName,
+					firstName: event,
+					lastName: "jj",
+					mobileNumber: event2 + 1,
+					nickName: `${d.getFullYear()}-${d.getDate()}-${d.getMonth()}`,
 				},
 				{
 					headers: {
@@ -112,8 +113,6 @@ export class Home extends Component {
 							onClick={() =>
 								this.handleOnSubmit(item.name, index)
 							}
-
-							// onClick={this.handleOnSubmit}
 						>
 							Caught
 						</button>
