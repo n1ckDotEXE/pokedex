@@ -79,7 +79,7 @@ module.exports = {
 
 			// Throws an error message if email of user is not found
 			if (!foundUser) {
-				throw { message: "User not found!!!!" };
+				throw { message: "User not found!" };
 			}
 
 			// Confirms if user's password is valid
@@ -109,7 +109,7 @@ module.exports = {
 			);
 
 			res.json({
-				message: "success",
+				message: "Success",
 				payload: true,
 			});
 		} catch (e) {

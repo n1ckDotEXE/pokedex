@@ -8,6 +8,7 @@ function NotFound() {
 				src="https://github.com/n1ckDotEXE/pokedex/blob/master/pokedex-frontend/src/component/lib/img/not-found.jpeg?raw=true"
 				style={{ width: 200, height: 200 }}
 				className="rounded mx-auto d-block"
+				alt="Error!"
 			></img>
 			<br />
 			<p className="fw-bold text-center">Sorry, something broke here..</p>

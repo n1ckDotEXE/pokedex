@@ -11,6 +11,14 @@ export class Home extends Component {
 			isLoading: false,
 			isError: false,
 			errorMessage: "",
+			pokeName: "",
+			pokeNum: "",
+			firstName: "",
+			lastName: "",
+			friendMobileNumber: "",
+			nickName: "",
+			errorObj: {},
+			friendsArray: [],
 		};
 	}
 
@@ -33,19 +41,79 @@ export class Home extends Component {
 			console.log(e);
 		}
 	}
-
-	handleCaughtPoke = () => {
-		axios
-			.post("/caught", {
-				firstName: "Fred",
-				lastName: "Flintstone",
-			})
-			.then(function (response) {
-				console.log(response);
-			})
-			.catch(function (error) {
-				console.log(error);
+	handleCreateFriend = (event) => {
+		this.setState({
+			[event.target.name]: event.target.value,
+		});
+	};
+	handleCaughtPoke = async (event) => {
+		const { pokeName, pokeNum } = this.state;
+		let jwtToken = localStorage.getItem("jwtToken");
+		try {
+			let payload = await axios.post(
+				"http://localhost:4001/friends/create-friend",
+				{
+					pokeName,
+					pokeNum,
+				},
+				{
+					headers: {
+						authorization: `Bearer ${jwtToken}`,
+					},
+				}
+			);
+			let newFriendsArray = [...this.state.friendsArray, payload.data];
+			this.setState({
+				firstName: "",
+				lastName: "",
+				friendpokeNum: "",
+				nickName: "",
+				friendsArray: newFriendsArray,
 			});
+		} catch (e) {
+			console.log(e.response);
+		}
+	};
+	handleOnSubmit = async (event) => {
+		event.preventDefault();
+
+		const {
+			firstName,
+			lastName,
+			friendMobileNumber,
+			nickName,
+		} = this.state;
+
+		let jwtToken = localStorage.getItem("jwtToken");
+
+		try {
+			let payload = await axios.post(
+				"http://localhost:4001/friends/create-friend",
+				{
+					firstName,
+					lastName,
+					mobileNumber: friendMobileNumber,
+					nickName,
+				},
+				{
+					headers: {
+						authorization: `Bearer ${jwtToken}`,
+					},
+				}
+			);
+
+			let newFriendsArray = [...this.state.friendsArray, payload.data];
+
+			this.setState({
+				firstName: "qq",
+				lastName: "qqq",
+				friendMobileNumber: "2",
+				nickName: "qqqq",
+				friendsArray: newFriendsArray,
+			});
+		} catch (e) {
+			console.log(e.response);
+		}
 	};
 
 	showPokeArray = () => {
@@ -67,7 +135,7 @@ export class Home extends Component {
 						<button
 							type="button"
 							className="btn btn-primary btn-sm"
-							onClick={this.handleCaughtPoke}
+							onClick={this.handleOnSubmit}
 						>
 							Caught
 						</button>

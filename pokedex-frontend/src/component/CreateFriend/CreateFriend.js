@@ -101,7 +101,7 @@ export class CreateFriend extends Component {
 			return (
 				<tr key={item._id}>
 					<td>{item.firstName}</td>
-					<td>{item.firstName}</td>
+					<td>{item.lastName}</td>
 					<td>{item.nickName}</td>
 					<td>{item.mobileNumber}</td>
 				</tr>
@@ -188,7 +188,7 @@ export class CreateFriend extends Component {
 								htmlFor="inputFriendMobileNumber"
 								className="visually-hidden"
 							>
-								Mobile Number
+								Pokemon Number
 							</label>
 							<input
 								type="text"
@@ -227,7 +227,7 @@ export class CreateFriend extends Component {
 										</th>
 										<th>Last Name</th>
 										<th>Nickname</th>
-										<th>Mobile Number</th>
+										<th>Pokemon Number</th>
 									</tr>
 
 									{this.showFriendsArray()}
