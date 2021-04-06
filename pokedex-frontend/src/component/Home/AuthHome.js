@@ -13,13 +13,14 @@ export class Home extends Component {
 			errorMessage: "",
 			pokeName: "",
 			pokeNum: "",
-			firstName: "",
-			lastName: "",
-			friendMobileNumber: "",
-			nickName: "",
+			firstName: "R",
+			lastName: "R",
+			friendMobileNumber: "6",
+			nickName: "R",
 			errorObj: {},
 			friendsArray: [],
 		};
+		this.handleOnSubmit = this.handleOnSubmit.bind(this);
 	}
 
 	async componentDidMount() {
@@ -46,35 +47,8 @@ export class Home extends Component {
 			[event.target.name]: event.target.value,
 		});
 	};
-	handleCaughtPoke = async (event) => {
-		const { pokeName, pokeNum } = this.state;
-		let jwtToken = localStorage.getItem("jwtToken");
-		try {
-			let payload = await axios.post(
-				"http://localhost:4001/friends/create-friend",
-				{
-					pokeName,
-					pokeNum,
-				},
-				{
-					headers: {
-						authorization: `Bearer ${jwtToken}`,
-					},
-				}
-			);
-			let newFriendsArray = [...this.state.friendsArray, payload.data];
-			this.setState({
-				firstName: "",
-				lastName: "",
-				friendpokeNum: "",
-				nickName: "",
-				friendsArray: newFriendsArray,
-			});
-		} catch (e) {
-			console.log(e.response);
-		}
-	};
-	handleOnSubmit = async (event) => {
+
+	handleOnSubmit = async (event1, event2) => {
 		event.preventDefault();
 
 		const {
@@ -116,7 +90,7 @@ export class Home extends Component {
 		}
 	};
 
-	showPokeArray = () => {
+	showPokeArray = (val) => {
 		return this.state.pokeArray.map((item, index) => {
 			return (
 				<div className="col-sm-4" key={index}>
@@ -135,7 +109,11 @@ export class Home extends Component {
 						<button
 							type="button"
 							className="btn btn-primary btn-sm"
-							onClick={this.handleOnSubmit}
+							onClick={() =>
+								this.handleOnSubmit(item.name, index)
+							}
+
+							// onClick={this.handleOnSubmit}
 						>
 							Caught
 						</button>
