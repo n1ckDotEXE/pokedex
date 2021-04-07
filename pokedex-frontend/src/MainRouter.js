@@ -9,6 +9,7 @@ import CreateFriend from "./component/CreateFriend/CreateFriend";
 import SignUp from "./component/SignUp/SignUp";
 import NotFound from "./component/NotFound/NotFound";
 import AuthHome from "./component/Home/AuthHome";
+import Profile from "./component/Profile/Profile";
 
 const MainRouter = (props) => {
 	return (
@@ -27,6 +28,7 @@ const MainRouter = (props) => {
 				<Route exact path="/sign-up" component={SignUp} />
 				<Route exact path="/home" component={Home} />
 				<Route exact path="/auth-home" component={AuthHome} />
+				<Route exact path="/profile" component={Profile} />
 				<Route exact path="/" component={Home} />
 				{/* <Route exact path="/my-pokemon" component={CreateFriend} /> */}
 				<Route path="*" component={NotFound} />

@@ -103,23 +103,15 @@ export class CreateFriend extends Component {
 					<td className="text-center text-capitalize">
 						{item.firstName}
 					</td>
-					<td>{item.lastName}</td>
-					<td>{item.nickName}</td>
 					<td>{item.mobileNumber}</td>
+
+					<td>{item.nickName}</td>
 				</tr>
 			);
 		});
 	};
 
 	render() {
-		const {
-			firstName,
-			lastName,
-			friendMobileNumber,
-			nickName,
-			isError,
-		} = this.state;
-
 		return (
 			<>
 				<div>
@@ -133,9 +125,8 @@ export class CreateFriend extends Component {
 										<th style={{ width: "10%" }}>
 											Pokemon
 										</th>
-										<th>Last Name</th>
-										<th>Capture Date</th>
 										<th>Pokemon Number</th>
+										<th>Capture Date</th>
 									</tr>
 
 									{this.showFriendsArray()}

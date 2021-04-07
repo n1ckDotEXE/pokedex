@@ -68,7 +68,9 @@ export class Home extends Component {
 					firstName: event,
 					lastName: "jj",
 					mobileNumber: event2 + 1,
-					nickName: `${d.getFullYear()}-${d.getDate()}-${d.getMonth()}`,
+					nickName: `${d.getFullYear()}-${
+						d.getMonth() + 1
+					}-${d.getDate()}`,
 				},
 				{
 					headers: {
@@ -91,7 +93,7 @@ export class Home extends Component {
 		}
 	};
 
-	showPokeArray = (val) => {
+	showPokeArray = () => {
 		return this.state.pokeArray.map((item, index) => {
 			return (
 				<div className="col-sm-4" key={index}>
