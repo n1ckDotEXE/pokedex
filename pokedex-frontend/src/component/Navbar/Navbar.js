@@ -9,7 +9,7 @@ function Navbar(props) {
 					to="/"
 					className=" fw-bolder text-decoration-none text-white"
 				>
-					PokeDEX
+					PokéDEX
 				</Link>
 			</p>
 			{props.user ? (
@@ -21,7 +21,7 @@ function Navbar(props) {
 							activeStyle={{ color: "yellow" }}
 							to="/auth-home"
 						>
-							PokeDEX
+							PokéDEX
 						</NavLink>
 					</nav>
 					<NavLink
@@ -29,7 +29,7 @@ function Navbar(props) {
 						activeStyle={{ color: "yellow" }}
 						to="/my-pokemon"
 					>
-						My Pokemon
+						My Pokémon
 					</NavLink>
 
 					<NavLink
@@ -57,7 +57,7 @@ function Navbar(props) {
 							activeStyle={{ color: "yellow" }}
 							to="/"
 						>
-							PokeDEX
+							PokéDEX
 						</NavLink>
 					</nav>
 					<NavLink

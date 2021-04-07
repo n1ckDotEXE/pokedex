@@ -45,7 +45,7 @@ export class CreateFriend extends Component {
 	};
 
 	handleOnSubmit = async (event) => {
-		event.preventDefault();
+		// event.preventDefault();
 
 		const {
 			firstName,
@@ -55,13 +55,10 @@ export class CreateFriend extends Component {
 		} = this.state;
 		let jwtToken = localStorage.getItem("jwtToken");
 		try {
-			let payload = await axios.post(
-				"http://localhost:4001/friends/create-friend",
+			let payload = await axios.delete(
+				"http://localhost:4001/friends/delete-friend",
 				{
-					firstName,
-					lastName,
-					mobileNumber: friendMobileNumber,
-					nickName,
+					event,
 				},
 				{
 					headers: {
@@ -96,17 +93,48 @@ export class CreateFriend extends Component {
 		});
 	};
 
-	showFriendsArray = () => {
-		return this.state.friendsArray.map((item) => {
-			return (
-				<tr key={item._id}>
-					<td className="text-center text-capitalize">
-						{item.firstName}
-					</td>
-					<td>{item.mobileNumber}</td>
+	// showFriendsArray = () => {
+	// 	return this.state.friendsArray.map((item) => {
+	// 		return (
+	// 			<tr key={item._id}>
+	// 				<td className="text-center text-capitalize">
+	// 					{item.firstName}
+	// 				</td>
+	// 				<td>{item.mobileNumber}</td>
 
-					<td>{item.nickName}</td>
-				</tr>
+	// 				<td>{item.nickName}</td>
+	// 			</tr>
+	// 		);
+	// 	});
+	// };
+
+	showFriendsArray = () => {
+		return this.state.friendsArray.map((item, index) => {
+			return (
+				<div className="col-sm-4" key={index}>
+					<div className="card">
+						<img
+							className="rounded mx-auto d-block"
+							src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.mobileNumber}.png`}
+							alt={item.firstName}
+							style={{ width: 96, height: 96 }}
+						/>
+						<p className="text-center text-capitalize fs-4 fw-bold">
+							{`${item.firstName}`}
+						</p>
+						<p className="text-center fs-8">{`${item.nickName}`}</p>
+						<button
+							type="button"
+							className="btn btn-warning btn-sm"
+							onClick={() =>
+								this.handleOnSubmit(item.name, index)
+							}
+						>
+							Release
+						</button>
+						<br />
+					</div>
+				</div>
 			);
 		});
 	};
@@ -118,21 +146,7 @@ export class CreateFriend extends Component {
 					{this.state.isLoading ? (
 						<span>...loading</span>
 					) : (
-						<div style={{ textAlign: "center" }}>
-							<table style={{ margin: "0 auto" }}>
-								<thead>
-									<tr>
-										<th style={{ width: "10%" }}>
-											Pokemon
-										</th>
-										<th>Pokemon Number</th>
-										<th>Capture Date</th>
-									</tr>
-
-									{this.showFriendsArray()}
-								</thead>
-							</table>
-						</div>
+						<div>{this.showFriendsArray()}</div>
 					)}
 				</div>
 			</>

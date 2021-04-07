@@ -24,7 +24,16 @@ const MainRouter = (props) => {
 					path="/my-pokemon"
 					component={CreateFriend}
 				/>
-				<Route exact path="/login" component={Login} />
+				<Route
+					exact
+					path="/login"
+					render={(routerProps) => (
+						<Login
+							{...routerProps}
+							handleUserLogin={props.handleUserLogin}
+						/>
+					)}
+				/>{" "}
 				<Route exact path="/sign-up" component={SignUp} />
 				<Route exact path="/home" component={Home} />
 				<Route exact path="/auth-home" component={AuthHome} />

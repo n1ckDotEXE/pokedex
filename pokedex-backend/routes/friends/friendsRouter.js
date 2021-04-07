@@ -1,8 +1,9 @@
 var express = require("express");
 var router = express.Router();
 const {
-  createFriend,
-  getAllFriends,
+	createFriend,
+	getAllFriends,
+	deleteFriend,
 } = require("./controller/friendsController");
 const { checkIsUserHaveValidJwtToken } = require("../lib/authChecker");
 

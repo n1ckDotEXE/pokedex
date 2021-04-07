@@ -59,4 +59,5 @@ const getAllFriends = async (req, res) => {
 module.exports = {
 	createFriend,
 	getAllFriends,
+	deleteFriend,
 };

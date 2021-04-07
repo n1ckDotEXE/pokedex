@@ -15,8 +15,6 @@ export class Home extends Component {
 			this.setState({
 				pokeArray: payload.data.results,
 			});
-
-			console.log(this.state.pokeArray);
 		} catch (e) {
 			console.log(e);
 		}
@@ -33,7 +31,7 @@ export class Home extends Component {
 								index + 1
 							}.png`}
 							alt={item.name}
-							style={{ width: 200, height: 200 }}
+							style={{ width: 96, height: 96 }}
 						/>
 						<p className="text-center text-capitalize fs-4 fw-bold">
 							{`#${index + 1} ${item.name}`}

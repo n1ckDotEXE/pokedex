@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export class Home extends Component {
 	constructor(props) {
@@ -88,6 +89,19 @@ export class Home extends Component {
 				nickName: "qqqq",
 				friendsArray: newFriendsArray,
 			});
+
+			toast.success(
+				`${event.charAt(0).toUpperCase() + event.slice(1)} was caught!`,
+				{
+					position: "top-center",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				}
+			);
 		} catch (e) {
 			console.log(e.response);
 		}
@@ -104,7 +118,7 @@ export class Home extends Component {
 								index + 1
 							}.png`}
 							alt={item.name}
-							style={{ width: 200, height: 200 }}
+							style={{ width: 96, height: 96 }}
 						/>
 						<p className="text-center text-capitalize fs-4 fw-bold">
 							{`#${index + 1} ${item.name}`}
@@ -116,7 +130,7 @@ export class Home extends Component {
 								this.handleOnSubmit(item.name, index)
 							}
 						>
-							Caught
+							Catch
 						</button>
 						<br />
 					</div>
