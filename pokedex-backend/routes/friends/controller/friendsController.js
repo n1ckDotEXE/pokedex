@@ -13,8 +13,8 @@ const createFriend = async (req, res) => {
 		const newFriend = new Friend({
 			firstName,
 			lastName,
-			pokeNum,
 			nickName,
+			pokeNum,
 		});
 
 		const savedNewFriend = await newFriend.save();
@@ -59,5 +59,4 @@ const getAllFriends = async (req, res) => {
 module.exports = {
 	createFriend,
 	getAllFriends,
-	deleteFriend,
 };

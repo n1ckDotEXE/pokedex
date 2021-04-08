@@ -123,7 +123,7 @@ export class CreateFriend extends Component {
 							{`${item.firstName}`}
 						</p>
 						<p className="text-center fs-8">{`${item.nickName}`}</p>
-						<button
+						{/* <button
 							type="button"
 							className="btn btn-warning btn-sm"
 							onClick={() =>
@@ -131,7 +131,7 @@ export class CreateFriend extends Component {
 							}
 						>
 							Release
-						</button>
+						</button> */}
 						<br />
 					</div>
 				</div>
